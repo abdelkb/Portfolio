@@ -37,7 +37,7 @@ document.querySelectorAll('.mob-link').forEach(l =>
 
 /* ── Dot grid ─────────────────────────────────────── */
 const grid = document.getElementById('dot-grid');
-if (grid) for (let i = 0; i < 36; i++) { const d = document.createElement('span'); grid.appendChild(d); }
+if (grid) for (let i = 0; i < 25; i++) { const d = document.createElement('span'); grid.appendChild(d); }
 
 /* ── Scroll reveal ────────────────────────────────── */
 const obs = new IntersectionObserver(entries => {
