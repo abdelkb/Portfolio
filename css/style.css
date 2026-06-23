@@ -270,34 +270,38 @@ ul { list-style: none; }
   opacity: .6;
 }
 
-/* Photo scene — contained blob shape like reference */
+/* Photo scene */
 .photo-scene {
   position: absolute;
-  bottom: 20px;
-  right: 40px;
-  width: 360px;
-  height: 380px;
+  bottom: 0;
+  right: 30px;
+  width: 380px;
+  height: 440px;
   z-index: 2;
 }
 
-/* The blob container: circular top, slightly flat bottom */
+/* The circle background */
 .photo-circle-bg {
   position: absolute;
-  inset: 0;
-  border-radius: 50% 50% 46% 46% / 55% 55% 45% 45%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
   background: var(--lblue);
   z-index: 0;
 }
 
 .hero-img {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 8%;
-  border-radius: 50% 50% 46% 46% / 55% 55% 45% 45%;
-  mix-blend-mode: multiply;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 95%;
+  object-fit: contain;
+  object-position: bottom center;
   z-index: 1;
 }
 
@@ -322,8 +326,8 @@ ul { list-style: none; }
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 280px;
-  height: 280px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   background: var(--lpurp);
 }
@@ -333,9 +337,8 @@ ul { list-style: none; }
   z-index: 1;
   width: 300px;
   height: 400px;
-  object-fit: cover;
-  object-position: top center;
-  mix-blend-mode: multiply;
+  object-fit: contain;
+  object-position: bottom center;
 }
 
 .about-card {
@@ -597,10 +600,9 @@ footer { background: var(--navy); padding: 2rem 0; }
   .hero-wrap { grid-template-columns: 1fr; text-align: center; }
   .hero-sub { max-width: 100%; }
   .hero-btns { justify-content: center; }
-  .hero-right { height: 360px; }
-  .photo-scene { right: 50%; transform: translateX(50%); width: 280px; height: 340px; }
+  .hero-right { height: 400px; }
+  .photo-scene { right: 50%; transform: translateX(50%); width: 300px; height: 380px; }
   .photo-circle-bg { width: 240px; height: 240px; }
-  .hero-img { width: 240px; height: 340px; }
   .deco-rect { width: 140px; height: 120px; }
   .dot-grid { right: 145px; }
 
