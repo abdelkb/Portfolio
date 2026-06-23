@@ -1,149 +1,99 @@
-/* ── Navigation ──────────────────────────────────────────────── */
-const navbar    = document.getElementById('navbar');
-const burger    = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobile-menu');
-const navLinks  = document.querySelectorAll('.nav-link');
+/* ── Navbar scroll ───────────────────────────────── */
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
+  navbar.classList.toggle('scrolled', window.scrollY > 10);
   updateActiveNav();
 });
 
-// Burger toggle
+function updateActiveNav() {
+  const sections = ['hero','about','works','services','contact'];
+  const scrollY = window.scrollY + 100;
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    const link = document.querySelector(`.nav-link[href="#${id}"]`);
+    if (!el || !link) return;
+    link.classList.toggle('active', scrollY >= el.offsetTop && scrollY < el.offsetTop + el.offsetHeight);
+  });
+}
+
+/* ── Burger menu ─────────────────────────────────── */
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobile-menu');
+
 burger.addEventListener('click', () => {
-  const open = burger.classList.toggle('open');
-  mobileMenu.classList.toggle('hidden', !open);
+  mobileMenu.classList.toggle('open');
+  const open = mobileMenu.classList.contains('open');
+  burger.querySelectorAll('span')[0].style.transform = open ? 'translateY(7px) rotate(45deg)' : '';
+  burger.querySelectorAll('span')[1].style.opacity = open ? '0' : '1';
+  burger.querySelectorAll('span')[2].style.transform = open ? 'translateY(-7px) rotate(-45deg)' : '';
 });
 
-// Close mobile menu on link click
-document.querySelectorAll('.mobile-nav-link, #mobile-menu .btn-primary').forEach(link => {
+document.querySelectorAll('.mobile-link').forEach(link => {
   link.addEventListener('click', () => {
-    burger.classList.remove('open');
-    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('open');
+    burger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
   });
 });
 
-// Active nav link based on scroll
-function updateActiveNav() {
-  const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
-  const scrollY = window.scrollY + 100;
+/* ── Dot grid ────────────────────────────────────── */
+const dotGrid = document.getElementById('dot-grid');
+if (dotGrid) {
+  for (let i = 0; i < 36; i++) {
+    const dot = document.createElement('span');
+    dotGrid.appendChild(dot);
+  }
+}
 
-  sections.forEach(id => {
-    const section = document.getElementById(id);
-    if (!section) return;
-    const top    = section.offsetTop;
-    const bottom = top + section.offsetHeight;
-    const link   = document.querySelector(`.nav-link[href="#${id}"]`);
-    if (link) {
-      link.classList.toggle('active', scrollY >= top && scrollY < bottom);
+/* ── Scroll reveal ───────────────────────────────── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const delay = parseFloat(entry.target.style.animationDelay) || 0;
+      setTimeout(() => entry.target.classList.add('visible'), delay * 1000);
+      observer.unobserve(entry.target);
     }
   });
-}
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 
-/* ── Scroll-triggered animations ─────────────────────────────── */
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        const delay = entry.target.style.animationDelay || '0ms';
-        const ms = parseInt(delay) || 0;
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, ms);
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-);
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-document.querySelectorAll('.animate-on-scroll').forEach(el => {
-  observer.observe(el);
-});
-
-/* ── Hero dot grid (decorative) ──────────────────────────────── */
-const heroSection = document.getElementById('hero');
-if (heroSection) {
-  const dotContainer = document.createElement('div');
-  dotContainer.className = 'absolute top-32 right-12 lg:right-20 grid gap-2.5 opacity-30 pointer-events-none';
-  dotContainer.style.gridTemplateColumns = 'repeat(6, 1fr)';
-  for (let i = 0; i < 36; i++) {
-    const dot = document.createElement('div');
-    dot.style.cssText = 'width:5px;height:5px;border-radius:50%;background:#8b5cf6';
-    dotContainer.appendChild(dot);
-  }
-  heroSection.appendChild(dotContainer);
-}
-
-/* ── Contact form ─────────────────────────────────────────────── */
-const form = document.getElementById('contact-form');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const name    = form.querySelector('[name="name"]').value;
-    const email   = form.querySelector('[name="email"]').value;
-    const subject = form.querySelector('[name="subject"]').value || 'Contact depuis le portfolio';
-    const message = form.querySelector('[name="message"]').value;
-
-    const mailto = `mailto:abdeladimkaoukab@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\n${message}`)}`;
-    window.location.href = mailto;
-
-    btn.textContent = 'Message préparé !';
-    btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-    setTimeout(() => {
-      btn.innerHTML = 'Envoyer le message <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
-      btn.style.background = '';
-    }, 3000);
-  });
-}
-
-/* ── Smooth scroll for anchor links ──────────────────────────── */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    const id = anchor.getAttribute('href').slice(1);
+/* ── Smooth scroll ───────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
     const target = document.getElementById(id);
     if (target) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const offset = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   });
 });
 
-/* ── Typing animation for hero subtitle ──────────────────────── */
-const titles = [
-  'Administrateur Système',
-  'Expert Azure & M365',
-  'Architecte PowerShell',
-  'Intégrateur IA & API',
-];
-let titleIdx = 0;
-let charIdx  = 0;
-let deleting = false;
-const titleEl = document.querySelector('h2 .typing-target');
+/* ── Hero form ───────────────────────────────────── */
+document.getElementById('hero-form')?.addEventListener('submit', e => {
+  e.preventDefault();
+  const email = e.target.querySelector('input[type="email"]').value;
+  window.location.href = `mailto:abdeladimkaoukab@gmail.com?subject=Contact depuis le portfolio&body=Email: ${encodeURIComponent(email)}`;
+});
 
-if (titleEl) {
-  function typeTitle() {
-    const current = titles[titleIdx];
-    if (!deleting) {
-      titleEl.textContent = current.slice(0, ++charIdx);
-      if (charIdx === current.length) {
-        deleting = true;
-        setTimeout(typeTitle, 2200);
-        return;
-      }
-    } else {
-      titleEl.textContent = current.slice(0, --charIdx);
-      if (charIdx === 0) {
-        deleting = false;
-        titleIdx = (titleIdx + 1) % titles.length;
-      }
-    }
-    setTimeout(typeTitle, deleting ? 45 : 80);
-  }
-  setTimeout(typeTitle, 1000);
-}
+/* ── Contact form ────────────────────────────────── */
+document.getElementById('contact-form')?.addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  const name    = e.target.querySelector('[name="name"]').value;
+  const email   = e.target.querySelector('[name="email"]').value;
+  const subject = e.target.querySelector('[name="subject"]').value || 'Contact depuis le portfolio';
+  const message = e.target.querySelector('[name="message"]').value;
+
+  window.location.href = `mailto:abdeladimkaoukab@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\n${message}`)}`;
+
+  btn.textContent = '✓ Message préparé !';
+  btn.style.background = '#10b981';
+  setTimeout(() => {
+    btn.innerHTML = 'Envoyer le message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:18px;height:18px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+    btn.style.background = '';
+  }, 3000);
+});

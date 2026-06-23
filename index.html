@@ -1,660 +1,441 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abdeladim Kaoukab — Administrateur Système | Cloud & IA</title>
+  <title>Abdeladim Kaoukab — SysAdmin | Cloud & Automatisation</title>
   <meta name="description" content="Administrateur Système spécialisé en Cloud Azure, automatisation PowerShell, intégration API Microsoft Graph et orchestration IA." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/style.css" />
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            azure: { 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7' },
-            violet: { 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed' },
-            navy:   { 900: '#0b1120', 800: '#111827', 700: '#1a2540', 600: '#1e2d4a' },
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
-          },
-          backgroundImage: {
-            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-          },
-        },
-      },
-    }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="dark bg-navy-900 text-slate-100 antialiased">
+<body>
 
-  <!-- ─────────────────────────── NAVIGATION ─────────────────────────── -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="flex items-center justify-between h-20">
+  <!-- ─── NAVBAR ─── -->
+  <nav id="navbar">
+    <div class="nav-container">
 
-        <!-- Logo -->
-        <a href="#hero" class="flex items-center gap-3 group">
-          <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-azure-500 to-violet-500 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-azure-500/30 group-hover:shadow-azure-500/50 transition-shadow">
-            AK
-          </div>
-          <span class="font-semibold text-slate-100 hidden sm:block">Abdeladim Kaoukab</span>
-        </a>
-
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex items-center gap-1">
-          <li><a href="#about"   class="nav-link">À propos</a></li>
-          <li><a href="#skills"  class="nav-link">Expertise</a></li>
-          <li><a href="#projects" class="nav-link">Projets</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-
-        <!-- CTA + Burger -->
-        <div class="flex items-center gap-3">
-          <a href="#contact" class="hidden md:inline-flex btn-primary">
-            Me contacter
-          </a>
-          <button id="burger" class="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-lg hover:bg-navy-700 transition" aria-label="Menu">
-            <span class="burger-bar w-5 h-0.5 bg-slate-300 rounded transition-all"></span>
-            <span class="burger-bar w-5 h-0.5 bg-slate-300 rounded transition-all"></span>
-            <span class="burger-bar w-3.5 h-0.5 bg-slate-300 rounded transition-all"></span>
-          </button>
+      <a href="#hero" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="8" fill="#1a1a4b"/>
+            <circle cx="18" cy="18" r="8" stroke="#6c63ff" stroke-width="2.5"/>
+            <circle cx="18" cy="18" r="3" fill="#0ea5e9"/>
+          </svg>
         </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about"    class="nav-link">About</a></li>
+        <li><a href="#works"    class="nav-link">Works</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact"  class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-socials">
+        <a href="https://www.linkedin.com/in/abdeladim-kaoukab" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/abdelkb" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="mailto:abdeladimkaoukab@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
       </div>
+
+      <button id="burger" aria-label="Menu mobile">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-navy-700 bg-navy-900/95 backdrop-blur-md">
-      <ul class="flex flex-col px-6 py-4 gap-1">
-        <li><a href="#about"    class="mobile-nav-link">À propos</a></li>
-        <li><a href="#skills"   class="mobile-nav-link">Expertise</a></li>
-        <li><a href="#projects" class="mobile-nav-link">Projets</a></li>
-        <li><a href="#contact"  class="mobile-nav-link">Contact</a></li>
-        <li class="pt-2"><a href="#contact" class="btn-primary w-full text-center block">Me contacter</a></li>
-      </ul>
+    <div id="mobile-menu">
+      <a href="#about"    class="mobile-link">About</a>
+      <a href="#works"    class="mobile-link">Works</a>
+      <a href="#services" class="mobile-link">Services</a>
+      <a href="#contact"  class="mobile-link">Contact</a>
     </div>
   </nav>
 
   <main>
-    <!-- ─────────────────────────── HERO ─────────────────────────── -->
-    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-20">
 
-      <!-- Background glow -->
-      <div class="absolute top-1/4 -left-40 w-96 h-96 bg-azure-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute bottom-1/4 -right-40 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- ─── HERO ─── -->
+    <section id="hero">
+      <div class="container hero-grid">
 
-      <!-- Dot grid -->
-      <div class="dot-grid absolute inset-0 pointer-events-none opacity-30"></div>
+        <!-- Left -->
+        <div class="hero-left">
+          <h1 class="hero-heading">
+            Hey, I'm a<br/>
+            <span class="accent-cyan">SysAdmin</span> &amp;<br/>
+            Cloud Expert.
+          </h1>
+          <p class="hero-sub">
+            Administrateur Système chez STO Solutions d'Affaires.<br/>
+            J'automatise les infrastructures IT avec Azure, PowerShell et l'IA.
+          </p>
+          <form class="hero-form" id="hero-form">
+            <input type="email" placeholder="Votre adresse email" />
+            <button type="submit">Me contacter</button>
+          </form>
+          <p class="hero-note">
+            <span>🚀</span> Disponible pour des mandats et collaborations !
+          </p>
+        </div>
 
-      <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-          <!-- Left: Text Content -->
-          <div class="space-y-8 animate-fade-in-up">
-            <!-- Location badge -->
-            <div class="inline-flex items-center gap-2 bg-navy-700/60 border border-navy-600 rounded-full px-4 py-1.5 text-sm text-slate-400">
-              <span class="w-2 h-2 rounded-full bg-azure-400 animate-pulse"></span>
-              Québec, Canada · Disponible
-            </div>
-
-            <!-- Heading -->
-            <div>
-              <p class="text-azure-400 font-mono text-sm mb-3 tracking-widest uppercase">Bonjour, je suis</p>
-              <h1 class="text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight text-white">
-                Abdeladim<br/>
-                <span class="gradient-text">Kaoukab</span>
-              </h1>
-              <h2 class="mt-4 text-xl lg:text-2xl font-semibold text-slate-300 leading-snug">
-                Administrateur Système
-                <span class="text-azure-400"> | </span>
-                Expert Cloud, Automatisation
-                <span class="text-violet-400"> &amp; </span>
-                Intégration IA
-              </h2>
-            </div>
-
-            <!-- Tagline -->
-            <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
-              J'exploite la puissance de <span class="text-azure-400 font-medium">PowerShell</span>, de <span class="text-violet-400 font-medium">l'IA</span> et des <span class="text-azure-400 font-medium">APIs Microsoft</span> pour automatiser, sécuriser et propulser les infrastructures informatiques modernes — transformant des heures de travail manuel en minutes d'exécution automatisée.
-            </p>
-
-            <!-- CTA Buttons -->
-            <div class="flex flex-wrap gap-4">
-              <a href="#projects" class="btn-primary group">
-                Voir mes projets
-                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </a>
-              <a href="#contact" class="btn-secondary">
-                Me contacter
-              </a>
-            </div>
-
-            <!-- Tech stack badges -->
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="tech-badge">PowerShell</span>
-              <span class="tech-badge">Azure</span>
-              <span class="tech-badge">MS Graph API</span>
-              <span class="tech-badge">NinjaOne</span>
-              <span class="tech-badge">IA / LLM</span>
-            </div>
-          </div>
-
-          <!-- Right: Profile visual -->
-          <div class="flex justify-center lg:justify-end animate-fade-in-right">
-            <div class="relative">
-              <!-- Decorative dot grid -->
-              <div class="absolute -top-8 -left-8 grid grid-cols-6 gap-2.5 opacity-40">
-                <template id="dot-template"></template>
-                <!-- Rendered by JS -->
-              </div>
-
-              <!-- Glow ring -->
-              <div class="absolute inset-0 rounded-full bg-gradient-to-br from-azure-500/30 to-violet-500/30 blur-2xl scale-110"></div>
-
-              <!-- Profile container -->
-              <div class="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-navy-600 shadow-2xl shadow-azure-500/20">
-                <div class="w-full h-full bg-gradient-to-br from-navy-700 to-navy-600 flex items-center justify-center">
-                  <!-- Placeholder avatar -->
-                  <div class="text-center">
-                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-azure-500/30 to-violet-500/30 border-2 border-azure-500/40 flex items-center justify-center mx-auto mb-4">
-                      <svg class="w-20 h-20 text-azure-400/60" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-                    </div>
-                    <p class="text-slate-500 text-sm font-mono">// photo.jpg</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Floating stat cards -->
-              <div class="floating-card absolute -left-8 top-1/2 -translate-y-1/2 bg-navy-800/90 border border-navy-600 backdrop-blur rounded-xl p-3 shadow-lg">
-                <div class="flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-lg bg-azure-500/20 flex items-center justify-center text-azure-400 text-base">☁️</div>
-                  <div>
-                    <p class="text-xs text-slate-500">Certifications</p>
-                    <p class="text-sm font-bold text-white">MS-900 · AZ-900 · SC-900</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="floating-card absolute -right-8 bottom-12 bg-navy-800/90 border border-navy-600 backdrop-blur rounded-xl p-3 shadow-lg">
-                <div class="flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 text-base">⚡</div>
-                  <div>
-                    <p class="text-xs text-slate-500">Focus</p>
-                    <p class="text-sm font-bold text-white">Automatisation IA</p>
-                  </div>
-                </div>
+        <!-- Right -->
+        <div class="hero-right">
+          <!-- Decorative rectangle top-right -->
+          <div class="deco-rect"></div>
+          <!-- Dot grid -->
+          <div class="dot-grid" id="dot-grid"></div>
+          <!-- Photo circle -->
+          <div class="photo-wrap">
+            <div class="photo-circle">
+              <div class="photo-placeholder">
+                <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="18" fill="#0ea5e9" opacity=".25"/><ellipse cx="40" cy="65" rx="26" ry="16" fill="#0ea5e9" opacity=".18"/><circle cx="40" cy="30" r="14" fill="#1a1a4b" opacity=".15"/></svg>
+                <p>Votre photo</p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
       <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 animate-bounce-slow">
-        <span class="text-xs font-mono tracking-widest uppercase">Défiler</span>
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      <div class="scroll-hint">
+        <div class="scroll-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <span>Explorer</span>
       </div>
     </section>
 
-    <!-- ─────────────────────────── ABOUT ─────────────────────────── -->
-    <section id="about" class="py-28 relative">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-800/30 to-transparent pointer-events-none"></div>
-      <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <!-- Stats column -->
-          <div class="grid grid-cols-2 gap-4 animate-on-scroll">
-            <div class="stat-card col-span-2">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-azure-500/15 border border-azure-500/30 flex items-center justify-center text-azure-400 text-2xl flex-shrink-0">🎯</div>
-                <div>
-                  <h3 class="font-bold text-white text-lg">Approche orientée impact</h3>
-                  <p class="text-slate-400 text-sm mt-1">Je conçois des solutions qui éliminent la répétition, réduisent les erreurs humaines et libèrent les équipes pour des tâches à haute valeur ajoutée.</p>
-                </div>
+    <!-- ─── ABOUT ─── -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">À propos</span>
+          <h2 class="section-title">Qui suis-je <span class="accent-cyan">?</span></h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-photo reveal">
+            <div class="about-photo-bg">
+              <div class="about-photo-placeholder">
+                <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="18" fill="#6c63ff" opacity=".2"/><ellipse cx="40" cy="65" rx="26" ry="16" fill="#6c63ff" opacity=".15"/></svg>
+                <p>Votre photo</p>
               </div>
             </div>
-            <div class="stat-card">
-              <p class="text-3xl font-extrabold gradient-text mb-1">3+</p>
-              <p class="text-slate-400 text-sm">Certifications Microsoft</p>
+            <div class="about-badge badge-1">
+              <span class="badge-num">3+</span>
+              <span class="badge-label">Certifications<br/>Microsoft</span>
             </div>
-            <div class="stat-card">
-              <p class="text-3xl font-extrabold text-violet-400 mb-1">∞</p>
-              <p class="text-slate-400 text-sm">Scripts automatisés</p>
+            <div class="about-badge badge-2">
+              <span class="badge-icon">⚡</span>
+              <span class="badge-label">Expert<br/>Automatisation</span>
             </div>
-            <div class="stat-card col-span-2">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-violet-500/15 border border-violet-500/30 flex items-center justify-center text-violet-400 text-2xl flex-shrink-0">🎓</div>
-                <div>
-                  <h3 class="font-bold text-white text-lg">Formation continue</h3>
-                  <p class="text-slate-400 text-sm mt-1">AEC Administration et Sécurité des Systèmes au Cégep Limoilou · AZ-104 en cours de préparation.</p>
-                </div>
+          </div>
+          <div class="about-text reveal">
+            <h3>Abdeladim <span class="accent-purple">Kaoukab</span></h3>
+            <p class="about-role">Administrateur Système | Cloud & Automatisation IA</p>
+            <p class="about-desc">
+              Chez <strong>STO Solutions d'Affaires</strong>, j'architecture des solutions d'automatisation qui transforment la gestion des systèmes Microsoft 365 et Azure. Je combine la rigueur de l'administration système avec la puissance des APIs modernes et de l'intelligence artificielle pour éliminer la répétition et libérer les équipes.
+            </p>
+            <p class="about-desc">
+              Étudiant en <strong>AEC Administration et Sécurité des Systèmes</strong> au Cégep Limoilou, je prépare actuellement la certification <span class="accent-cyan">AZ-104</span>.
+            </p>
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-num accent-cyan">MS-900</span>
+                <span class="stat-lbl">Microsoft 365<br/>Fundamentals</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-num accent-purple">AZ-900</span>
+                <span class="stat-lbl">Azure<br/>Fundamentals</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-num" style="color:#10b981">SC-900</span>
+                <span class="stat-lbl">Security<br/>Fundamentals</span>
+              </div>
+            </div>
+            <a href="#contact" class="btn-primary">Travailler ensemble</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── WORKS ─── -->
+    <section id="works">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Projets</span>
+          <h2 class="section-title">Mes <span class="accent-cyan">Automatisations</span></h2>
+        </div>
+
+        <div class="works-grid">
+
+          <div class="work-card reveal">
+            <div class="work-card-top" style="background: linear-gradient(135deg,#e8f4fd,#d1e8f5);">
+              <div class="work-card-icon" style="background:#0ea5e9">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+              </div>
+              <div class="work-card-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <span class="work-tag" style="color:#0ea5e9;background:#e8f4fd">PowerShell · Graph API</span>
+              <h3>Gestion en masse M365</h3>
+              <p>Script PowerShell automatisant la création, modification et désactivation de milliers de comptes M365 via Microsoft Graph API en une seule exécution.</p>
+              <div class="work-tech">
+                <span>MS Graph</span><span>PowerShell 7</span><span>Azure AD</span>
               </div>
             </div>
           </div>
 
-          <!-- Text column -->
-          <div class="space-y-6 animate-on-scroll">
-            <div>
-              <p class="text-azure-400 font-mono text-sm tracking-widest uppercase mb-3">01. À propos</p>
-              <h2 class="section-title">Transformer les infrastructures par l'automatisation</h2>
+          <div class="work-card reveal" style="animation-delay:.1s">
+            <div class="work-card-top" style="background: linear-gradient(135deg,#ede9fe,#ddd6fe);">
+              <div class="work-card-icon" style="background:#6c63ff">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+              </div>
+              <div class="work-card-dots">
+                <span></span><span></span><span></span>
+              </div>
             </div>
-            <p class="text-slate-400 leading-relaxed">
-              Chez <span class="text-white font-medium">STO Solutions d'Affaires</span>, j'architecture et déploie des solutions d'automatisation qui transforment la gestion des systèmes Microsoft 365 et Azure. Mon approche combine la rigueur de l'administration système avec la puissance des API modernes et de l'intelligence artificielle.
-            </p>
-            <p class="text-slate-400 leading-relaxed">
-              Passionné par l'efficacité opérationnelle, je conçois des pipelines PowerShell qui interagissent avec <span class="text-azure-400 font-medium">Microsoft Graph API</span>, orchestre des flux de travail intelligents via des modèles IA, et gère des parcs informatiques complexes avec <span class="text-violet-400 font-medium">NinjaOne RMM</span>.
-            </p>
-            <div class="flex items-center gap-4 pt-2">
-              <a href="#skills" class="btn-primary">Voir mon expertise</a>
-              <a href="mailto:abdeladimkaoukab@gmail.com" class="text-azure-400 hover:text-azure-300 font-medium flex items-center gap-1.5 transition-colors">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                abdeladimkaoukab@gmail.com
+            <div class="work-card-body">
+              <span class="work-tag" style="color:#6c63ff;background:#ede9fe">IA · API · Automation</span>
+              <h3>Orchestration IA dans les flux IT</h3>
+              <p>Intégration d'un LLM dans un pipeline PowerShell pour analyser automatiquement les tickets, suggérer des résolutions et escalader intelligemment.</p>
+              <div class="work-tech">
+                <span>OpenAI API</span><span>PowerShell</span><span>REST API</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-card reveal" style="animation-delay:.2s">
+            <div class="work-card-top" style="background: linear-gradient(135deg,#d1fae5,#a7f3d0);">
+              <div class="work-card-icon" style="background:#10b981">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              </div>
+              <div class="work-card-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <span class="work-tag" style="color:#10b981;background:#d1fae5">NinjaOne · RMM</span>
+              <h3>Déploiement automatisé RMM</h3>
+              <p>Automatisation du déploiement de politiques de sécurité, mises à jour et applications sur tout un parc via NinjaOne RMM et Intune.</p>
+              <div class="work-tech">
+                <span>NinjaOne</span><span>Intune</span><span>Defender</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-card reveal" style="animation-delay:.05s">
+            <div class="work-card-top" style="background: linear-gradient(135deg,#fef3c7,#fde68a);">
+              <div class="work-card-icon" style="background:#f59e0b">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+              </div>
+              <div class="work-card-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <span class="work-tag" style="color:#f59e0b;background:#fef3c7">Reporting · Security</span>
+              <h3>Dashboard Sécurité Automatisé</h3>
+              <p>Génération automatique de rapports de sécurité hebdomadaires depuis Azure AD Sign-in logs, envoyés par email HTML aux responsables.</p>
+              <div class="work-tech">
+                <span>Graph API</span><span>Azure AD</span><span>HTML Email</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-card reveal" style="animation-delay:.15s">
+            <div class="work-card-top" style="background: linear-gradient(135deg,#fce7f3,#fbcfe8);">
+              <div class="work-card-icon" style="background:#ec4899">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+              </div>
+              <div class="work-card-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <span class="work-tag" style="color:#ec4899;background:#fce7f3">Onboarding · M365</span>
+              <h3>Pipeline Onboarding/Offboarding</h3>
+              <p>Cycle de vie complet des employés : création de compte, attribution de licences, groupes, MFA et révocation automatique à la sortie.</p>
+              <div class="work-tech">
+                <span>Graph API</span><span>Azure AD</span><span>MFA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-card reveal" style="animation-delay:.25s">
+            <div class="work-card-top" style="background: linear-gradient(135deg,#e8f4fd,#ede9fe);">
+              <div class="work-card-icon" style="background:linear-gradient(135deg,#0ea5e9,#6c63ff)">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+              </div>
+              <div class="work-card-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <span class="work-tag" style="color:#6c63ff;background:#ede9fe">Monitoring · Alerting</span>
+              <h3>Monitoring M365 &amp; Alertes Teams</h3>
+              <p>Surveillance proactive des services Microsoft 365 avec notifications automatiques dans Teams via webhooks dès la détection d'un incident.</p>
+              <div class="work-tech">
+                <span>Graph API</span><span>Teams Webhook</span><span>PowerShell</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SERVICES ─── -->
+    <section id="services">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Expertise</span>
+          <h2 class="section-title">Mes <span class="accent-cyan">Services</span></h2>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="service-card reveal">
+            <div class="service-icon" style="background:#e8f4fd;color:#0ea5e9">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+            </div>
+            <h3>Cloud &amp; Admin</h3>
+            <p>Architecture, déploiement et administration des plateformes Microsoft Azure et M365 en environnement entreprise. Gestion des identités, licences et politiques.</p>
+            <ul class="service-list">
+              <li>Microsoft Azure (AZ-900, AZ-104 en cours)</li>
+              <li>Microsoft 365 Administration</li>
+              <li>Azure Active Directory</li>
+              <li>Exchange Online / Teams / SharePoint</li>
+            </ul>
+          </div>
+
+          <div class="service-card service-card--featured reveal" style="animation-delay:.1s">
+            <div class="service-icon" style="background:#ede9fe;color:#6c63ff">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+            </div>
+            <div class="featured-label">⭐ Core Expertise</div>
+            <h3>Automatisation &amp; Dev</h3>
+            <p>Scripting avancé, intégration d'APIs et orchestration intelligente de workflows. Je transforme des tâches manuelles répétitives en processus automatisés fiables.</p>
+            <ul class="service-list">
+              <li>PowerShell avancé (scripts, modules)</li>
+              <li>Microsoft Graph API</li>
+              <li>REST APIs &amp; JSON</li>
+              <li>Intégration IA / LLM dans les flux IT</li>
+            </ul>
+          </div>
+
+          <div class="service-card reveal" style="animation-delay:.2s">
+            <div class="service-icon" style="background:#d1fae5;color:#10b981">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            </div>
+            <h3>Sécurité &amp; RMM</h3>
+            <p>Gestion proactive de la sécurité IT, conformité et supervision des parcs informatiques. Monitoring, alerting et réponse aux incidents en temps réel.</p>
+            <ul class="service-list">
+              <li>NinjaOne RMM</li>
+              <li>Microsoft Defender &amp; Intune</li>
+              <li>Conditional Access Policies</li>
+              <li>Sécurité M365 (SC-900)</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Contact</span>
+          <h2 class="section-title">Travaillons <span class="accent-cyan">ensemble</span></h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <p class="contact-intro">Vous avez un projet d'automatisation, un besoin en Cloud ou cherchez un expert IT ? Je suis disponible pour discuter.</p>
+            <div class="contact-items">
+              <a href="mailto:abdeladimkaoukab@gmail.com" class="contact-item">
+                <div class="contact-item-icon" style="background:#e8f4fd;color:#0ea5e9">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </div>
+                <div>
+                  <span class="contact-item-label">Email</span>
+                  <span class="contact-item-value">abdeladimkaoukab@gmail.com</span>
+                </div>
+              </a>
+              <a href="https://www.linkedin.com/in/abdeladim-kaoukab" target="_blank" rel="noopener" class="contact-item">
+                <div class="contact-item-icon" style="background:#ede9fe;color:#6c63ff">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                </div>
+                <div>
+                  <span class="contact-item-label">LinkedIn</span>
+                  <span class="contact-item-value">Abdeladim Kaoukab</span>
+                </div>
+              </a>
+              <a href="https://github.com/abdelkb" target="_blank" rel="noopener" class="contact-item">
+                <div class="contact-item-icon" style="background:#d1fae5;color:#10b981">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                </div>
+                <div>
+                  <span class="contact-item-label">GitHub</span>
+                  <span class="contact-item-value">github.com/abdelkb</span>
+                </div>
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ─────────────────────────── SKILLS ─────────────────────────── -->
-    <section id="skills" class="py-28 relative">
-      <div class="absolute inset-0 bg-gradient-to-b from-navy-800/20 to-transparent pointer-events-none"></div>
-      <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-        <div class="text-center mb-16 animate-on-scroll">
-          <p class="text-azure-400 font-mono text-sm tracking-widest uppercase mb-3">02. Expertise</p>
-          <h2 class="section-title">Trois piliers technologiques</h2>
-          <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Une expertise complémentaire couvrant le Cloud, l'automatisation et la sécurité pour des solutions IT complètes et robustes.</p>
-        </div>
-
-        <!-- 3 Pillars -->
-        <div class="grid md:grid-cols-3 gap-6 mb-16">
-
-          <!-- Pillar 1 -->
-          <div class="pillar-card group animate-on-scroll">
-            <div class="w-14 h-14 rounded-2xl bg-azure-500/15 border border-azure-500/30 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">☁️</div>
-            <h3 class="text-xl font-bold text-white mb-2">Cloud &amp; Admin</h3>
-            <p class="text-slate-400 text-sm mb-6">Architecture, déploiement et administration des plateformes Microsoft en entreprise.</p>
-            <div class="space-y-3">
-              <div class="skill-row">
-                <span>Microsoft Azure</span>
-                <div class="skill-bar"><div class="skill-fill bg-azure-500" style="--w:85%"></div></div>
+          <form class="contact-form reveal" id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nom</label>
+                <input type="text" name="name" placeholder="Votre nom" required />
               </div>
-              <div class="skill-row">
-                <span>Microsoft 365</span>
-                <div class="skill-bar"><div class="skill-fill bg-azure-500" style="--w:90%"></div></div>
-              </div>
-              <div class="skill-row">
-                <span>Active Directory</span>
-                <div class="skill-bar"><div class="skill-fill bg-azure-500" style="--w:80%"></div></div>
-              </div>
-              <div class="skill-row">
-                <span>Exchange / Teams</span>
-                <div class="skill-bar"><div class="skill-fill bg-azure-400" style="--w:85%"></div></div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="votre@email.com" required />
               </div>
             </div>
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="cert-badge azure">MS-900</span>
-              <span class="cert-badge azure">AZ-900</span>
-              <span class="cert-badge azure-dim">AZ-104 →</span>
+            <div class="form-group">
+              <label>Sujet</label>
+              <input type="text" name="subject" placeholder="Projet d'automatisation, question..." />
             </div>
-          </div>
-
-          <!-- Pillar 2 -->
-          <div class="pillar-card group animate-on-scroll" style="animation-delay:100ms">
-            <div class="w-14 h-14 rounded-2xl bg-violet-500/15 border border-violet-500/30 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">⚡</div>
-            <h3 class="text-xl font-bold text-white mb-2">Automatisation &amp; Dev</h3>
-            <p class="text-slate-400 text-sm mb-6">Scripting avancé, intégration d'API et orchestration intelligente de workflows.</p>
-            <div class="space-y-3">
-              <div class="skill-row">
-                <span>PowerShell</span>
-                <div class="skill-bar"><div class="skill-fill bg-violet-500" style="--w:92%"></div></div>
-              </div>
-              <div class="skill-row">
-                <span>Microsoft Graph API</span>
-                <div class="skill-bar"><div class="skill-fill bg-violet-500" style="--w:88%"></div></div>
-              </div>
-              <div class="skill-row">
-                <span>REST APIs / JSON</span>
-                <div class="skill-bar"><div class="skill-fill bg-violet-400" style="--w:85%"></div></div>
-              </div>
-              <div class="skill-row">
-                <span>IA / LLM Integration</span>
-                <div class="skill-bar"><div class="skill-fill bg-violet-500" style="--w:75%"></div></div>
-              </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" rows="5" placeholder="Décrivez votre besoin..." required></textarea>
             </div>
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="cert-badge violet">PS Advanced</span>
-              <span class="cert-badge violet">Graph API</span>
-            </div>
-          </div>
-
-          <!-- Pillar 3 -->
-          <div class="pillar-card group animate-on-scroll" style="animation-delay:200ms">
-            <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🔒</div>
-            <h3 class="text-xl font-bold text-white mb-2">Sécurité &amp; RMM</h3>
-            <p class="text-slate-400 text-sm mb-6">Gestion proactive de la sécurité, conformité et supervision des parcs informatiques.</p>
-            <div class="space-y-3">
-              <div class="skill-row">
-                <span>NinjaOne RMM</span>
-                <div class="skill-bar"><div class="skill-fill bg-emerald-500" style="--w:88%"></div></div>
-              </div>
-              <div class="skill-row">
-                <span>Sécurité Microsoft</span>
-                <div class="skill-bar"><div class="skill-fill bg-emerald-500" style="--w:82%"></div></div>
-              </div>
-              <div class="skill-row">
-                <span>Defender / Intune</span>
-                <div class="skill-bar"><div class="skill-fill bg-emerald-400" style="--w:80%"></div></div>
-              </div>
-              <div class="skill-row">
-                <span>Conditional Access</span>
-                <div class="skill-bar"><div class="skill-fill bg-emerald-500" style="--w:78%"></div></div>
-              </div>
-            </div>
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="cert-badge emerald">SC-900</span>
-              <span class="cert-badge emerald">RMM Expert</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools grid -->
-        <div class="animate-on-scroll">
-          <p class="text-center text-slate-500 text-sm font-mono uppercase tracking-widest mb-6">Outils &amp; Technologies</p>
-          <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
-            <div class="tool-chip">PowerShell</div>
-            <div class="tool-chip">Azure AD</div>
-            <div class="tool-chip">Graph API</div>
-            <div class="tool-chip">NinjaOne</div>
-            <div class="tool-chip">Intune</div>
-            <div class="tool-chip">Defender</div>
-            <div class="tool-chip">Exchange</div>
-            <div class="tool-chip">Teams</div>
-            <div class="tool-chip">SharePoint</div>
-            <div class="tool-chip">REST API</div>
-            <div class="tool-chip">JSON / XML</div>
-            <div class="tool-chip">Git</div>
-            <div class="tool-chip">VS Code</div>
-            <div class="tool-chip">OpenAI API</div>
-            <div class="tool-chip">Windows Server</div>
-            <div class="tool-chip">M365 Admin</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─────────────────────────── PROJECTS ─────────────────────────── -->
-    <section id="projects" class="py-28 relative">
-      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure-500/40 to-transparent"></div>
-      <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-        <div class="text-center mb-16 animate-on-scroll">
-          <p class="text-azure-400 font-mono text-sm tracking-widest uppercase mb-3">03. Projets</p>
-          <h2 class="section-title">Automatisations concrètes</h2>
-          <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Des solutions qui réduisent le temps d'administration et augmentent la fiabilité des systèmes.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <!-- Project 1 -->
-          <div class="project-card animate-on-scroll group">
-            <div class="project-header bg-gradient-to-br from-azure-500/20 to-azure-500/5 border-b border-navy-600">
-              <div class="flex items-center justify-between mb-4">
-                <span class="project-tag azure">PowerShell · Graph API</span>
-                <div class="flex gap-1.5">
-                  <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
-                </div>
-              </div>
-              <div class="font-mono text-xs text-slate-500 space-y-1">
-                <p><span class="text-violet-400">$users</span> = <span class="text-azure-400">Get-MgUser</span> -All -Filter <span class="text-emerald-400">"..."</span></p>
-                <p><span class="text-violet-400">$users</span> | <span class="text-azure-400">ForEach-Object</span> &#123;</p>
-                <p class="pl-4"><span class="text-azure-400">Set-MgUser</span> -UserId <span class="text-violet-400">$_</span>.Id</p>
-                <p>&#125;</p>
-              </div>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-azure-400 transition-colors">Gestion en masse via Graph API</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-4">Script PowerShell automatisant la création, modification et désactivation de milliers de comptes M365 en une seule exécution via Microsoft Graph API.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">MS Graph</span>
-                <span class="tech-tag">PowerShell 7</span>
-                <span class="tech-tag">Azure AD</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-card animate-on-scroll group" style="animation-delay:100ms">
-            <div class="project-header bg-gradient-to-br from-violet-500/20 to-violet-500/5 border-b border-navy-600">
-              <div class="flex items-center justify-between mb-4">
-                <span class="project-tag violet">IA · PowerShell · API</span>
-                <div class="flex gap-1.5">
-                  <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
-                </div>
-              </div>
-              <div class="font-mono text-xs text-slate-500 space-y-1">
-                <p><span class="text-violet-400">$prompt</span> = <span class="text-emerald-400">"Analyse ce ticket IT..."</span></p>
-                <p><span class="text-violet-400">$response</span> = <span class="text-azure-400">Invoke-AIWorkflow</span></p>
-                <p class="pl-4">-Prompt <span class="text-violet-400">$prompt</span></p>
-                <p class="pl-4">-Model <span class="text-emerald-400">"gpt-4o"</span></p>
-              </div>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">Orchestration IA dans les flux IT</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-4">Intégration d'un LLM (GPT) dans un pipeline PowerShell pour analyser automatiquement les tickets, suggérer des résolutions et escalader intelligemment.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">OpenAI API</span>
-                <span class="tech-tag">PowerShell</span>
-                <span class="tech-tag">REST API</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card animate-on-scroll group" style="animation-delay:200ms">
-            <div class="project-header bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 border-b border-navy-600">
-              <div class="flex items-center justify-between mb-4">
-                <span class="project-tag emerald">NinjaOne · Automation</span>
-                <div class="flex gap-1.5">
-                  <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
-                </div>
-              </div>
-              <div class="font-mono text-xs text-slate-500 space-y-1">
-                <p><span class="text-emerald-400">Deploy-Application</span> `</p>
-                <p class="pl-4">-Devices <span class="text-violet-400">$targetGroup</span> `</p>
-                <p class="pl-4">-Policy <span class="text-emerald-400">"Baseline-Security"</span> `</p>
-                <p class="pl-4">-Silent <span class="text-azure-400">$true</span></p>
-              </div>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Déploiement automatisé via RMM</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-4">Automatisation du déploiement de politiques de sécurité, mises à jour et applications sur l'ensemble d'un parc informatique via NinjaOne RMM.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">NinjaOne</span>
-                <span class="tech-tag">Intune</span>
-                <span class="tech-tag">Defender</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="project-card animate-on-scroll group" style="animation-delay:50ms">
-            <div class="project-header bg-gradient-to-br from-azure-500/15 to-violet-500/10 border-b border-navy-600">
-              <div class="flex items-center justify-between mb-4">
-                <span class="project-tag azure">Reporting · Graph API</span>
-                <div class="flex gap-1.5">
-                  <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
-                </div>
-              </div>
-              <div class="font-mono text-xs text-slate-500 space-y-1">
-                <p><span class="text-azure-400">Get-MgAuditLogSignIn</span> `</p>
-                <p class="pl-4">-Filter <span class="text-emerald-400">"riskLevel ne 'none'"</span></p>
-                <p>| <span class="text-azure-400">Export-RiskReport</span></p>
-                <p class="pl-4">-Format <span class="text-emerald-400">"HTML,CSV"</span></p>
-              </div>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-azure-400 transition-colors">Dashboard Sécurité Automatisé</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-4">Génération automatique de rapports de sécurité hebdomadaires extraits depuis Azure AD Sign-in logs, envoyés par email formaté en HTML.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Graph API</span>
-                <span class="tech-tag">Azure AD</span>
-                <span class="tech-tag">HTML Email</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5 -->
-          <div class="project-card animate-on-scroll group" style="animation-delay:150ms">
-            <div class="project-header bg-gradient-to-br from-violet-500/15 to-azure-500/10 border-b border-navy-600">
-              <div class="flex items-center justify-between mb-4">
-                <span class="project-tag violet">Onboarding · M365</span>
-                <div class="flex gap-1.5">
-                  <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
-                </div>
-              </div>
-              <div class="font-mono text-xs text-slate-500 space-y-1">
-                <p><span class="text-azure-400">New-Employee</span> -CSV <span class="text-emerald-400">$csvPath</span></p>
-                <p><span class="text-slate-600"># Creates AD user</span></p>
-                <p><span class="text-slate-600"># Assigns licenses</span></p>
-                <p><span class="text-slate-600"># Sets MFA + groups</span></p>
-              </div>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">Pipeline Onboarding/Offboarding</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-4">Automatisation complète du cycle de vie des employés : création de compte, attribution de licences, groupes, MFA et révocation à la sortie.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Graph API</span>
-                <span class="tech-tag">Azure AD</span>
-                <span class="tech-tag">MFA</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6 -->
-          <div class="project-card animate-on-scroll group" style="animation-delay:250ms">
-            <div class="project-header bg-gradient-to-br from-emerald-500/15 to-azure-500/10 border-b border-navy-600">
-              <div class="flex items-center justify-between mb-4">
-                <span class="project-tag emerald">Monitoring · Alerting</span>
-                <div class="flex gap-1.5">
-                  <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
-                </div>
-              </div>
-              <div class="font-mono text-xs text-slate-500 space-y-1">
-                <p><span class="text-emerald-400">Watch-ServiceHealth</span> `</p>
-                <p class="pl-4">-Services <span class="text-violet-400">@("EXO","SPO","Teams")</span></p>
-                <p>| <span class="text-azure-400">Send-TeamsAlert</span></p>
-                <p class="pl-4">-Channel <span class="text-emerald-400">"#it-ops"</span></p>
-              </div>
-            </div>
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Monitoring M365 &amp; Alertes Teams</h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-4">Surveillance proactive de la santé des services Microsoft 365 avec notifications automatiques dans Teams via webhooks dès qu'un incident est détecté.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Graph API</span>
-                <span class="tech-tag">Teams Webhook</span>
-                <span class="tech-tag">PowerShell</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ─────────────────────────── CONTACT ─────────────────────────── -->
-    <section id="contact" class="py-28 relative">
-      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-800/20 to-transparent pointer-events-none"></div>
-
-      <div class="max-w-4xl mx-auto px-6 lg:px-10">
-        <div class="text-center mb-16 animate-on-scroll">
-          <p class="text-azure-400 font-mono text-sm tracking-widest uppercase mb-3">04. Contact</p>
-          <h2 class="section-title">Discutons d'un projet</h2>
-          <p class="text-slate-400 mt-4 max-w-xl mx-auto">Vous avez un défi d'automatisation, un projet Cloud ou besoin d'un expert IT ? Je suis disponible pour en discuter.</p>
-        </div>
-
-        <!-- Contact cards -->
-        <div class="grid sm:grid-cols-3 gap-4 mb-12 animate-on-scroll">
-          <a href="mailto:abdeladimkaoukab@gmail.com" class="contact-card group">
-            <div class="w-12 h-12 rounded-xl bg-azure-500/15 border border-azure-500/30 flex items-center justify-center text-azure-400 text-2xl mb-4 group-hover:scale-110 transition-transform">✉️</div>
-            <h3 class="font-semibold text-white mb-1">Email</h3>
-            <p class="text-slate-400 text-sm break-all">abdeladimkaoukab@gmail.com</p>
-          </a>
-          <a href="https://www.linkedin.com/in/abdeladim-kaoukab" target="_blank" rel="noopener" class="contact-card group">
-            <div class="w-12 h-12 rounded-xl bg-violet-500/15 border border-violet-500/30 flex items-center justify-center text-violet-400 text-2xl mb-4 group-hover:scale-110 transition-transform">💼</div>
-            <h3 class="font-semibold text-white mb-1">LinkedIn</h3>
-            <p class="text-slate-400 text-sm">Abdeladim Kaoukab</p>
-          </a>
-          <a href="https://github.com/abdelkb" target="_blank" rel="noopener" class="contact-card group">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-4 group-hover:scale-110 transition-transform">🐙</div>
-            <h3 class="font-semibold text-white mb-1">GitHub</h3>
-            <p class="text-slate-400 text-sm">github.com/abdelkb</p>
-          </a>
-        </div>
-
-        <!-- Contact form -->
-        <div class="bg-navy-800/60 border border-navy-600 rounded-2xl p-8 backdrop-blur animate-on-scroll">
-          <form id="contact-form" class="space-y-5">
-            <div class="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label class="form-label">Nom</label>
-                <input type="text" name="name" placeholder="Votre nom" class="form-input" required />
-              </div>
-              <div>
-                <label class="form-label">Email</label>
-                <input type="email" name="email" placeholder="votre@email.com" class="form-input" required />
-              </div>
-            </div>
-            <div>
-              <label class="form-label">Sujet</label>
-              <input type="text" name="subject" placeholder="Projet d'automatisation, question..." class="form-input" />
-            </div>
-            <div>
-              <label class="form-label">Message</label>
-              <textarea name="message" rows="5" placeholder="Décrivez votre besoin..." class="form-input resize-none" required></textarea>
-            </div>
-            <button type="submit" class="btn-primary w-full justify-center text-base py-3.5">
+            <button type="submit" class="btn-primary btn-full">
               Envoyer le message
-              <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
             </button>
           </form>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- ─────────────────────────── FOOTER ─────────────────────────── -->
-  <footer class="border-t border-navy-700 py-10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-azure-500 to-violet-500 flex items-center justify-center text-white font-bold text-xs">AK</div>
-          <span class="text-slate-400 text-sm">Abdeladim Kaoukab — SysAdmin &amp; Cloud Expert</span>
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#1a1a4b"/><circle cx="18" cy="18" r="8" stroke="#6c63ff" stroke-width="2.5"/><circle cx="18" cy="18" r="3" fill="#0ea5e9"/></svg>
         </div>
-        <p class="text-slate-600 text-sm font-mono">
-          Construit avec <span class="text-azure-400">HTML</span> · <span class="text-violet-400">Tailwind CSS</span> · <span class="text-emerald-400">Vanilla JS</span>
-        </p>
+        <span>Abdeladim Kaoukab</span>
+      </div>
+      <p class="footer-copy">© 2025 Abdeladim Kaoukab — SysAdmin &amp; Cloud Expert</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/abdeladim-kaoukab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/abdelkb" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:abdeladimkaoukab@gmail.com">Email</a>
       </div>
     </div>
   </footer>
