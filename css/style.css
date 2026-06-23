@@ -270,34 +270,43 @@ ul { list-style: none; }
   opacity: .6;
 }
 
-/* Photo scene — contained blob shape like reference */
+/* Photo scene — head overflows top, body follows circle curve at bottom */
 .photo-scene {
   position: absolute;
-  bottom: 20px;
-  right: 40px;
+  bottom: 0;
+  right: 50px;
   width: 360px;
-  height: 380px;
+  height: 500px;
   z-index: 2;
 }
 
-/* The blob container: circular top, slightly flat bottom */
+/* Light blue circle — sits at the bottom */
 .photo-circle-bg {
   position: absolute;
-  inset: 0;
-  border-radius: 50% 50% 46% 46% / 55% 55% 45% 45%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
   background: var(--lblue);
   z-index: 0;
 }
 
+/* Photo — taller than circle so head pokes above,
+   bottom clips to follow the circle curve */
 .hero-img {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  height: 500px;
   object-fit: cover;
-  object-position: center 8%;
-  border-radius: 50% 50% 46% 46% / 55% 55% 45% 45%;
+  object-position: center 5%;
   mix-blend-mode: multiply;
+  /* Round ONLY the bottom to match the circle curve, top stays straight */
+  border-radius: 0 0 50% 50% / 0 0 37% 37%;
   z-index: 1;
 }
 
